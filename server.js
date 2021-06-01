@@ -22,11 +22,11 @@ app.use(bodyParser.json());
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Anything that doesn't match the above, send back index.html
-// Handle React routing, return all requests to React app
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.get('/*', (req, res) => {
+    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.use('/', require('./routers/router'));
 
