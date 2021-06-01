@@ -1,6 +1,6 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
 //Establishing MySQL database connection using Sequelize
 const db = new Sequelize(
@@ -9,7 +9,7 @@ const db = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST,
-    dialect: "mysql",
+    dialect: 'postgres',
     pool: {
       max: 10,
       min: 0,
