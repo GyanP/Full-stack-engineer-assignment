@@ -14,15 +14,13 @@
     "react-loader-spinner": "^4.0.0",
     "react-modal": "^3.13.1",
     "react-scripts": "4.0.3",
-    "serve": "^11.3.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
