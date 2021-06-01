@@ -9,7 +9,7 @@ const db = require('./db/db');
 
 const app = express();
 
-const PORT = process.env.PORT | 9000;
+const PORT = process.env.PORT | 5000;
 
 app.use(cors());
 
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('entering', process.env.NODE_ENV);
   app.get('/*', (req, res) => {
     res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
