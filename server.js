@@ -39,6 +39,6 @@ app.use('/', require('./routers/router'));
 const server = http.createServer(app);
 
 server.listen(PORT, '0.0.0.0', () => {
-  db.sync({ alert: true });
+  // db.sync({ alert: true });
   console.log(`server is runing on Port ${PORT}`);
 });
