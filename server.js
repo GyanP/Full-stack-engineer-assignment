@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
+const http = require('http');
 
 const db = require('./db/db');
 
@@ -27,7 +28,15 @@ app.get('/', (req, res) => {
 
 app.use('/', require('./routers/router'));
 
-app.listen(PORT, '0.0.0.0', () => {
+/*
+------------------
+    Create Server
+------------------
+*/
+
+const server = http.createServer(app);
+
+server.listen(PORT, '0.0.0.0', () => {
   db.sync({ alert: true });
   console.log(`server is runing on Port ${PORT}`);
 });
