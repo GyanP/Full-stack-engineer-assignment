@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getArticals = async () => {
+  console.log('process.env.REACT_APP_URL', process.env.REACT_APP_URL);
   return await axios
     .get(`${process.env.REACT_APP_URL}`)
     .then((resData) => resData.data)
@@ -9,7 +10,7 @@ const getArticals = async () => {
 
 const getArtical = async (data) => {
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     Authorization: `Bearer ${data.token}`,
   };
 
