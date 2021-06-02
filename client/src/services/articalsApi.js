@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 const getArticals = async () => {
-  console.log('process.env.REACT_APP_URL', process.env.REACT_APP_URL);
   return await axios
-    .get(`${process.env.REACT_APP_URL}`)
+    .get(``)
     .then((resData) => resData.data)
     .catch((err) => console.log(err));
 };

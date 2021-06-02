@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 const signUpServies = async (data) => {
   return await axios
-    .post(`${process.env.REACT_APP_URL}/sign-up`, data)
+    .post(`sign-up`, data)
     .then((resData) => resData.data)
     .catch((err) => {
-      console.log("......err", err);
+      console.log('......err', err);
       throw err;
     });
 };
