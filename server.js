@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use('/', require('./routers/router'));
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -30,8 +31,6 @@ app.get('/*', (req, res) => {
   res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 // }
-
-app.use('/', require('./routers/router'));
 
 /*
 ------------------
