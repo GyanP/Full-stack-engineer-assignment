@@ -22,14 +22,14 @@ app.use(bodyParser.json());
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-if (process.env.NODE_ENV === 'production') {
-  console.log('entering', process.env.NODE_ENV);
-  app.get('/*', (req, res) => {
-    console.log('req', req);
-    console.log('res', res);
-    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+console.log('entering', process.env.NODE_ENV);
+app.get('/*', (req, res) => {
+  console.log('req', req);
+  console.log('res', res);
+  res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+// }
 
 app.use('/', require('./routers/router'));
 
