@@ -9,7 +9,7 @@ const db = new Sequelize(
   'asxaxoaoqxdzrk',
   'd7de2f29f37a1bacfd74256d7392a7967fbd217339a0b985d19ad8bef42a9c5a',
   {
-    host: 'ec2-3-89-0-52.compute-1.amazonaws.com',
+    host: '117.207.212.88',
     dialect: 'postgres',
     operatorsAliases: false,
     pool: {
