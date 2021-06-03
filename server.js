@@ -4,10 +4,20 @@ const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
 const http = require('http');
-
-const db = require('./db/db');
+const { connect } = require('mongoose');
 
 const app = express();
+
+connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Database connected successfully!!!');
+  })
+  .catch((error) => {
+    console.log('Error in database connection', error.message);
+  });
 
 app.use(cors());
 
@@ -33,4 +43,5 @@ const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`server is runing on Port ${port}`);
+  console.log('process.env.DB_URL', process.env.DB_URL);
 });

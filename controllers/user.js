@@ -1,8 +1,9 @@
-require("dotenv").config();
-const bcrypt = require("bcrypt");
+require('dotenv').config();
+const bcrypt = require('bcrypt');
 
-const { generateAccessToken } = require("../auth/auth");
-const { UserModel } = require("../models/userModel");
+const { generateAccessToken } = require('../auth/auth');
+
+const { UserModel } = require('../models');
 
 exports.sign_up = async (req, res) => {
   const { password, email, name } = req.body;
@@ -31,10 +32,10 @@ exports.sign_up = async (req, res) => {
 exports.login = async (req, res) => {
   const { password, email } = req.body;
 
-  UserModel.findOne({ where: { email } })
+  UserModel.findOne({ email })
     .then(async (user) => {
       if (!user) {
-        res.send({ status: 0, message: "You have enter wrong credentials." });
+        res.send({ status: 0, message: 'You have enter wrong credentials.' });
       } else {
         await bcrypt
           .compare(password.trim(), user.password)
@@ -43,7 +44,7 @@ exports.login = async (req, res) => {
               const token = await generateAccessToken();
               res.send({
                 status: 1,
-                message: "success",
+                message: 'success',
                 userId: user.id,
                 userName: user.name,
                 token,
@@ -51,7 +52,7 @@ exports.login = async (req, res) => {
             } else {
               res.send({
                 status: 0,
-                message: "You have enter wrong credentials.",
+                message: 'You have enter wrong credentials.',
               });
             }
           });
