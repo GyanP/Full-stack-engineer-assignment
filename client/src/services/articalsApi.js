@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getArticals = async () => {
   return await axios
-    .get(`https://full-stack-requirements.herokuapp.com/`)
+    .get(`/api`)
     .then((resData) => resData.data)
     .catch((err) => console.log(err));
 };

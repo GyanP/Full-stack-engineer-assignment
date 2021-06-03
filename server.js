@@ -19,13 +19,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/', require('./routers/router'));
+app.use('/api', require('./routers/router'));
 
 // Setup static directory to serve
-app.use(express.static(path.resolve('client', 'build')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve('client', 'build', 'index.html'));
+app.get(['/', '/*'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join('client', 'build', 'index.html'));
 });
 
 const server = http.createServer(app);
