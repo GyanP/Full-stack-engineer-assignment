@@ -1,9 +1,9 @@
-const db = require("../db/db");
-const Sequelize = require("sequelize");
+const db = require('../db/db');
+const Sequelize = require('sequelize');
 
-const UserModel = db.define("user", {
+const UserModel = db.define('user', {
   id: {
-    type: Sequelize.INTEGER(11),
+    type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
