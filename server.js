@@ -9,8 +9,6 @@ const db = require('./db/db');
 
 const app = express();
 
-const PORT = process.env.PORT | 8000;
-
 app.use(cors());
 
 // parse application/x-www-form-urlencoded
@@ -21,20 +19,18 @@ app.use(bodyParser.json());
 
 app.use('/api', require('./routers/router'));
 
-// Setup static directory to serve
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get(['/', '/*'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join('client', 'build', 'index.html'));
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
-  db.sync({ alert: true });
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => {
   console.log(`server is runing on Port ${PORT}`);
 });
