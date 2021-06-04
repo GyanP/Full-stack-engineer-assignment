@@ -5,7 +5,6 @@ const signUpServies = async (data) => {
     .post(`/api/sign-up`, data)
     .then((resData) => resData.data)
     .catch((err) => {
-      console.log('......err', err);
       throw err;
     });
 };

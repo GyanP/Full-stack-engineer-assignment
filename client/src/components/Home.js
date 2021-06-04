@@ -34,6 +34,11 @@ const Home = (props) => {
     fetchArticles();
   }, []);
 
+  /*
+  -------------------------------
+    Function to fetch articles
+  ------------------------------
+  */
   const fetchArticles = async () => {
     const result = await getArticals();
     if (result) {
@@ -50,6 +55,11 @@ const Home = (props) => {
     setReadArtModelIsOPen(false);
   };
 
+  /*
+  ---------------------------------
+    Function to fetch an article
+  ---------------------------------
+  */
   const fatchArtical = async (data) => {
     await getArtical(data)
       .then((resData) => {
@@ -66,6 +76,11 @@ const Home = (props) => {
       });
   };
 
+  /*
+  -----------------------------------------
+    Function to verify user authentication
+  -----------------------------------------
+  */
   const checkUserLogedInOrNot = async (link) => {
     const token = sessionStorage.getItem('token');
     const name = sessionStorage.getItem('name');

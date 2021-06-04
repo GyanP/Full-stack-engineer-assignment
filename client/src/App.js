@@ -14,13 +14,19 @@ function App() {
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     const name = sessionStorage.getItem('name');
+
     if (token) {
       setUserData({ ...userdata, name, token });
     } else {
       setUserData(userdataInitialState);
-    }
+    } // eslint-disable-next-line
   }, []);
 
+  /*
+  ----------------------------
+    Function to logout user
+  ---------------------------
+  */
   const logOutHandler = () => {
     sessionStorage.clear();
     setUserData({ name: null, token: null });

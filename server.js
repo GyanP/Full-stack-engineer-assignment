@@ -43,5 +43,4 @@ const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`server is runing on Port ${port}`);
-  console.log('process.env.DB_URL', process.env.DB_URL);
 });

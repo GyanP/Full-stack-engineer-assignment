@@ -5,11 +5,21 @@ import UserContext from './hooks.js/userContext';
 const Header = ({ setModalIsOpen, setFormType, formType, logOutHandler }) => {
   const { userdata, setUserData } = useContext(UserContext);
 
+  /*
+  ---------------------------------
+    Function to manage login modal
+  ---------------------------------
+  */
   const loginModelhandler = () => {
     setFormType({ ...formType, loginForm: true });
     setModalIsOpen(true);
   };
 
+  /*
+  ---------------------------
+    Function to logout user.
+  ---------------------------
+  */
   const onLogOut = async () => {
     await logOutHandler();
     setUserData({ name: null, token: null });
